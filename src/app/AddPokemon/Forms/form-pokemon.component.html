@@ -1,0 +1,161 @@
+
+<form [formGroup]="monFormulaire" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+        <div class="col s8 offset-s2">
+            <div class="card-panel">
+
+                <!-- Pokemon name-->
+                <div class="form-group">
+                    <label for="name">Nom</label>
+                    <input type="text" name="name" id="name" 
+                    required   formControlName="name"
+                    pattern="[a-zA-Zàéèç]{1,25}$"
+                    class="form-input"
+                    >
+                 
+                    <div class="error-message">Le nom du pokemon est obligatoire et doit contenir entre 1 et 25 caractères.</div>
+                
+ 
+                 
+                     
+                   
+                    
+
+                  
+                </div>
+                <!-- Pokemon hp-->
+                <div class="form-group">
+                    <label for="hp">Point de vie</label>
+                    <input type="number" name="hp" id="hp" 
+                    required formControlName="hp"
+                    pattern="[0-9]{1,3}$"
+                    class="form-input"
+                    >
+                 
+                    <div class="error-message"> Le nombre de point de vie doit être compris entre 1 et 3 chiffres.</div>
+                    
+
+                    
+                </div>
+
+                <!-- Pokemon cp-->
+                <div class="form-group">
+                    <label for="cp">Attaque</label>
+                    <input type="number" name="cp" id="cp" 
+                    required formControlName="cp"
+                    pattern="[0-9]{1,3}$"
+                    class="form-input"
+                    >
+                 
+                    <div class="error-message">  Le nombre de point d'attaque doit être compris entre 1 et 3 chiffres.</div>
+                    
+
+                </div> 
+
+                  <!-- Pokemon Image-->
+                  <div class="form-group">
+                    <label for="picture">Entrer 'url de l'image( url valide)</label>
+                    <input type="text" name="picture" id="picture" 
+                    required formControlName="picture"
+                    pattern="^(?:https?|ftp):\/\/[^\s/$.?#].[^\s]*$"
+                    class="form-input"
+                    >
+                 
+                    <div class="error-message">   l'url n'est pas valide</div>
+                    
+                    
+                </div> 
+
+                   <!-- Pokemon Rarete-->
+                   <div class="form-group">
+                    <label for="rarete">Entrer la Rarete du Pokemon en fonction dunombre d'etoile( seule les etoiles sont acceptees)</label>
+                    <input type="text" name="rarete" id="rarete" 
+                    required formControlName="rarete"
+                    pattern="^\*{1,4}$" maxlength="4"
+                    class="form-input"
+                    >
+                 
+                    <div class="error-message">    verifier votre saisie le niveau de rareter ne dois pas depasser 4 etoiles</div>
+                    
+                    
+                </div> 
+
+
+
+             
+                
+                <!-- Pokemon types-->
+                
+                    <h6 for="types">Types (selectionnner au moins un type et au plus 3 types)</h6>
+                  
+                    <div *ngFor="let type of types">
+                      
+                        <label>
+                            <input type="checkbox" id="{{ type }}" class="filled-in"
+                             name="type"     [value]="type" (change)="ajouterChoix($event)"  
+                             [checked]="monFormulaire.get('type')?.value?.includes(type)" required
+                          >
+                          
+                            <span [attr.for]="type">
+                               
+                                <div class="">{{ type }}  </div>
+                               
+                               
+                            </span>
+                          
+
+                         
+                        </label>
+
+                       
+
+
+
+                        
+                       
+                      </div>
+                
+
+
+
+              
+                
+                <!-- Submit button-->
+                <div class="divider"></div>
+
+                <table class="">
+                    <tr>
+                        <td>
+                            <div class="section center">
+                                <button type="submit" class="waves-effect waves-light btn"
+                              
+                                >Valider</button>
+                               
+                            </div>
+                        </td>
+
+                        <td>
+                            <div class="section center">
+                                <button type="submit" class="waves-effect waves-light btn"
+                                (click)="Retour()"
+                                >Retour</button>
+                               
+                            </div>
+                        </td>
+
+                      
+
+                      
+                    </tr>
+                </table>
+               
+            </div>
+        </div>
+    </div>
+
+    
+</form>
+
+
+

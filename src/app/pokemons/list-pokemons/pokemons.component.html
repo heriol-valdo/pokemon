@@ -1,0 +1,105 @@
+
+<table>
+  <tr>
+    <td><h3 class="center">List de pokemons</h3></td>
+   
+    <td style="margin-right: 30px;">
+     
+      <table>
+        <tr>
+      
+          <td>
+            
+            <input type="text" id="search-name" 
+             placeholder="Rechercher un pokemon par son nom" 
+             pattern="[a-zA-Zàéèç]{1,25}$"
+             #inputName
+             (keyup)="search(undefined, undefined, inputName.value)">
+
+            <input type="text" id="search-rarete" 
+            pattern="^\*{1,4}$" maxlength="4"
+             placeholder="Rechercher par rarete(seulement les etoiles sont autorisees )" 
+
+             #inputRarete
+             (keyup)="search( inputRarete.value, undefined,undefined)">
+
+             <input type="text" id="search-type" 
+            
+              placeholder="Rechercher par type" 
+              pattern="[a-zA-Zàéèç]{1,25}$"
+              #inputType
+              (keyup)="search(undefined,inputType.value,undefined)">
+            
+          </td>
+        
+        </tr>
+      </table>
+     
+     
+     
+     
+    
+    </td>
+
+  
+    <td style="margin-right: 30px;">
+      <button class="floating-btn round" class="waves-effect waves-light btn"  (click)="generatePdf()">
+        PDf-Generate
+      </button>
+    </td>
+     
+
+
+    <td style="margin-right: 30px;">
+      <button class="floating-btn round" class="waves-effect waves-light btn"  (click)="logoat()">
+      Deconnecter
+      </button>
+    </td>
+
+    <td style="margin-right: 20px;">
+      <button class="floating-btn round" style="background-color: yellow;" (click)="AddPokemon()">
+     <i class="fa fa-plus  floating-btn"></i>
+      </button>
+    </td>
+  </tr>
+</table>
+
+
+
+
+
+
+<div class="container">
+ 
+
+ 
+ 
+  
+  <table class="pokemon-table">
+    <thead>
+      <tr>
+       
+        <th>Image</th>
+        <th>Nom</th>
+        <th>Type</th>
+        <th>Rarete</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pokemon of pokemons">
+       
+        <td> <div class="card-image">
+          <img [src]="pokemon.picture" alt="image" />
+        </div>
+        </td>
+        <td>{{ pokemon.name }}</td>
+        <td>  <span *ngFor="let type of pokemon.types" class="{{ type | pokemonTypeColor }}">{{ type }}</span></td>
+        <td><span class="{{pokemon.rarete | pokemonRareteColor}}"> {{ pokemon.rarete   }}</span></td>
+        <td><button (click)="selectPokemon(pokemon)" class="waves-effect waves-light btn">Voir détails</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+</div>

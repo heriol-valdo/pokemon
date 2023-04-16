@@ -1,0 +1,20 @@
+<div class="login-container">
+  <h1 class="center">Login</h1>
+  <form [formGroup]="monFormulaire" (ngSubmit)="onSubmit()">
+    <div class="form-group center">
+      <label for="username">Username</label>
+      <input type="text" class="form-control center" id="username" 
+      translate="no"  formControlName="username"
+      required  name="username" style="margin:auto; width: 300px;" placeholder="heriol" value="heriol">
+    </div>
+    <div class="form-group center">
+      <label for="password center">Password</label>
+      <input type="password" class="form-control center" id="password" 
+      translate="no" 
+      formControlName="password"
+      required name="password" style="margin:auto; width: 300px;" placeholder="heriol" value="heriol">
+    </div>
+    <button type="submit" class="btn btn-primary center" style="margin-left: 500px;margin-top: 20px; width: 300px;">Login</button>
+  </form>
+  <div class="alert alert-danger center" *ngIf="error">le nom est invalide  avec ce  mot de passe</div>
+</div>

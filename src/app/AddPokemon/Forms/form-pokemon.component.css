@@ -1,0 +1,21 @@
+.form-input:invalid {
+  border-color: red;
+}
+
+.form-input:invalid + .error-message {
+  display: block;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.error-message {
+  display: none;
+}
+
+input[type="checkbox"]:not(:checked) + .error-message {
+  display: block;
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
